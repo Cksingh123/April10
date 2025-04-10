@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        function<void(TreeNode*)> dfs = [&](TreeNode* root) {
+            if (!root) {
+                return;
+            }
+            //left mai jana hai
+            dfs(root->left);
+            //root value 
+            ans.push_back(root->val);
+            //root right mai jana hai
+            dfs(root->right);
+        };
+        dfs(root);
+        return ans;
+    }
+};
